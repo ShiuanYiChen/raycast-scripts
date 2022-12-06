@@ -4,7 +4,7 @@
 # @raycast.author Shiuan Yi Chen
 # @raycast.authorURL https://github.com/ShiuanYiChen
 # @raycast.description Airpods ANC Toggle.
-# @raycast.icon ??
+# @raycast.icon 🎧
 
 # @raycast.mode silent
 # @raycast.packageName System
