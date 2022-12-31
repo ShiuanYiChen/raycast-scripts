@@ -17,17 +17,18 @@ set ControlCenterWindow to "Control Center"
 
 tell application "System Events"
 	tell process "ControlCenter"
-		click menu bar item "Sound" of menu bar 1
-		set outputsList to scroll area of window ControlCenterWindow
-		set airpodsToggle to checkbox 1 of scroll area 1 of window ControlCenterWindow whose title contains AirPodsName
+		click (menu bar item 1 of menu bar 1 whose value of attribute "AXDescription" is "Sound")
+		set outputsList to scroll area 1 of group 1 of window ControlCenterWindow
+		set airpodsToggle to checkbox 1 of outputsList whose value of attribute "AXAttributedDescription" contains AirPodsName
 		set airpodsToggleValue to value of airpodsToggle
 		tell airpodsToggle to click
 		delay 0.1
-		set airpodsANC to checkbox 1 of scroll area 1 of window ControlCenterWindow whose title contains "Noise Cancellation"
-
+		
+		set airpodsANC to checkbox 1 of outputsList whose value of attribute "AXAttributedDescription" contains "Noise Cancellation"
+		
 		if exists airpodsANC then
 			if value of airpodsANC is 1 then
-				set airpodsTransparency to checkbox 1 of scroll area 1 of window ControlCenterWindow whose title contains "Transparency"
+				set airpodsTransparency to checkbox 1 of outputsList whose value of attribute "AXAttributedDescription" contains "Transparency"
 				tell airpodsTransparency to click
 				do shell script "echo Transparency"
 			else
@@ -35,6 +36,6 @@ tell application "System Events"
 				do shell script "echo Noise Cancellation"
 			end if
 		end if
-
+		
 	end tell
 end tell
