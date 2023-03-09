@@ -35,6 +35,7 @@ tell application "System Events"
 				tell airpodsANC to click
 				do shell script "echo Noise Cancellation"
 			end if
+			key code 53
 		end if
 		
 	end tell
